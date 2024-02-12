@@ -6,7 +6,7 @@ def  mergeSort(table1):
     if len(table1) <=1: #테이블 길이가 1이하이면 테이블값 리턴
         return table1 
 
-    mid=len(table1)//2 # 테이블 길이 측정 하고 반으로 나눠서 mid에 넣
+    mid=len(table1)//2 # 테이블 길이 측정 하고 반으로 나눠서 mid에 넣음
     left=table1[:mid] # 처음부터 미드 값까지 왼쪽에 넣음
     right=table1[mid:] # 미드값 부터 끝값까지 오른쪽에 넣음
     #print(left)
