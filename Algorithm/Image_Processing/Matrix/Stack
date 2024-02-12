@@ -1,0 +1,19 @@
+import numpy as np # numpy 모듈 임포트
+import matplotlib.pyplot as plt # matplotlib 모듈 임포트, plt.(함수) 로 쓰게 함
+
+empty=np.zeros((5,5)) # 0으로 채워진 5x5 행렬, empty에 저장
+full=np.ones((5,5))*255 # 255로 채워진 5x5 행렬, full에 저장
+
+e_m=np.hstack((empty,full)) # empty,full 행열을 옆으로 붙임, e_m에 저장
+m_e=np.hstack((full,empty)) # full,empty 행열을 옆으로 붙임, m_e에 저장
+
+imsi1=np.vstack((e_m,m_e)) # e_m,m_e에 저장된 행렬을 밑으로 붙임, imsi1에 저장
+
+imsi2=np.hstack((imsi1,imsi1)) # imsi1에 저장된 행렬을 옆으로 붙임, imsi2에 저장
+
+for i in range(18): # for문 18번 반복함
+  imsi2=np.hstack((imsi2,imsi1)) # imsi2에 imsi1을 옆으로 붙임, imsi2에 저장
+
+
+plt.imshow(imsi2) # imsi2 출력
+plt.show() # figure창 띄움 
