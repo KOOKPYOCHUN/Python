@@ -1,1 +1,299 @@
+import random
+#####################합병정렬######################
 
+def  mergeSort(table1):
+    
+    if len(table1) <=1: #테이블 길이가 1이하이면 테이블값 리턴
+        return table1 
+
+    mid=len(table1)//2 # 테이블 길이 측정 하고 반으로 나눠서 mid에 넣
+    left=table1[:mid] # 처음부터 미드 값까지 왼쪽에 넣음
+    right=table1[mid:] # 미드값 부터 끝값까지 오른쪽에 넣음
+    #print(left)
+    #print("")
+    #print(right)
+    #print("")
+    pList=[] #빈 리스트 생성
+    left1=mergeSort(left) #함수 처음으로 돌아가서 1이상 까지 반복 왼쪽에 있는걸 반으로 나눔
+    right1=mergeSort(right) #오른쪽에 있는걸 반으로 나눔
+    #print(left1)
+    #print("")
+    #print(right1)
+    #print("")
+    while len(left1)>0 and len(right1)>0:##왼쪽 오른쪽 비교함
+        if left1[0]<right1[0]: #오른쪽이 더 크면 왼쪽꺼를 p리스트에 넣음
+            pList.append(left1[0]) #
+            del left1[0] #왼쪽에 넣은 값을 지워서 그 다음값을 0번째로 만듦
+        else:
+            pList.append(right1[0])
+            del right1[0]
+      
+    while len(left1)>1: ##왼쪽끼리 비교
+        if left1[0]<left1[1]: #왼쪽에 있는 0번째 값 1첫째 값 비교
+            pList.append(left1[0]) #왼쪽이 작으면 p리스트에 넣음
+            del left1[0] ##왼쪽에 넣은 값을 지워서 그 다음값을 0번째로 만듦
+        else:
+            pList.append(left1[1]) 
+            del left1[1]
+
+    if len(left1)==1: #리스트에 1만 남으면 p리스트에 넣음
+        pList.append(left1[0])
+        del left1[0]
+
+
+    while len(right1)>1: ##오른쪽끼리 비교
+        if right1[0]<right1[1]: 
+            pList.append(right1[0])
+            del right1[0]
+        else:
+            pList.append(right1[1])
+            del right1[1]
+            
+    if len(right1)==1:
+        pList.append(right1[0])
+        del right1[0]
+
+    return pList #p리스트값 리턴
+#################################################################
+def  insertionSort(a): ##삽입정렬
+    for i in range(len(a)): #리스트의 길이만큼 i에 하나씩 넣음
+        print
+        play = a[i] #리스트[i]위치를 play에 넣음, 1,2,3,4,차례대로 넣음
+        k = i - 1 #i값의 -1값 만큼 k에 넣음 ex) i가 3이면 k=2
+        
+        while k >= 0 and a[k] > play: #k(=i-1)값이 0이상, i-1위치 play값보다 크면
+            a[k + 1] = a[k] #i-1위치와 k + 1위치를 바꿈, #비교 하면서 k값을 -1 비교 하면서 왼쪽으로 쭉쭉 넘어감
+            k = k -1 #
+            
+
+        a[k + 1] = play #
+    return a
+# 첫번째 위치 값이 들어오면 play에 저장
+# 첫번째 값보다 -1한 값을 k에 저장 ex) i가 3이면 k=2
+# k(=i-1)값이 0이상, i-1위치 play값보다 크면 while문 실행
+# play에 값을 저장
+# i-1위치값을 i값에다 넣음/5를 기준으로 ex)1,4,6,5-->1,4,6,6
+# k + 1에 play에 저장한 값을 넣음
+###################################################################
+def mergeSort1(table1):
+  sort_List=[] #빈 리스트
+  for i in table1: #뒤에 리스트 값을 하나씩 빼서 i에 넣음
+    sort_List+= i #sort_List에 하나씩 뺀 i값을 넣음
+  return sort_List #값 리턴
+
+def ins_sotr1(table1): 
+  a_List=[]
+  for i in table1:
+    a_List+= i
+  return a_List
+####################
+table1=[]
+table2=[]
+table3=[]
+tablepro1=[]
+tablepro2=[]
+
+List=[]
+
+num_List1=[]
+num_List2=[]
+
+value=0
+
+###################
+print("▽▽▽▽빈 테이블1▽▽▽▽")
+for i in range(0,10): 
+    for k in range(0,10):  
+        List.append(value) #10x10을 리스트에 넣음 
+
+    table1.append(List) #리스트에 넣은거 테이블1 리스트에 넣음
+    List=[] #리스트 초기화해서 다른곳에서 재활
+
+for i in range(0,10):
+    for k in range(0,10):
+        print("%4d"%table1[i][k],end=" ")
+    print("")
+
+print("♧♧♧♧빈 테이블2♧♧♧♧")
+for i in range(0,10):
+    for k in range(0,10):
+        List.append(value)
+    table2.append(List)
+    List=[]
+
+for i in range(0,10):
+    for k in range(0,10):
+        print("%4d"%table2[i][k],end=" ")
+    print("")
+
+########## 테이블1에 들어가는 숫자 셔플 ##########
+for i in range(1,101): #1~100까지 숫자 뽑아서 i에 넣고
+    num_List1.append(i) #빈 리스트에 i값 넣어줌
+random.shuffle(num_List1) #num_List1값을 셔플 함수로 섞음
+print("")
+'''
+print(num_List1)
+print("")
+'''
+##################################################
+print("▼▼▼▼테이블1 랜덤 숫자 넣기▼▼▼▼")
+for i in range(0,10): #셔플한 숫자 테이블1에 넣기
+    for k in range(0,10):
+        table1[i][k]=num_List1[0] #셔플한 리스트를 테이블에 넣어줌 
+        del num_List1[0] #차례로 집어넣고 넣은 값을 지움
+
+for i in range(0,10):
+    for k in range(0,10):
+
+        print("%4d"%table1[i][k],end=" ") 
+    print("")
+########## 테이블2에 들어가는 숫자 셔플 ##########
+for i in range(101,201): #101~200까지 숫자넣음
+    num_List2.append(i)
+random.shuffle(num_List2)
+print("")
+'''
+print(num_List2)
+print("")
+'''
+##################################################
+print("♣♣♣♣테이블2 랜덤 숫자 넣기♣♣♣♣")
+for i in range(0,10): #셔플한 숫자 테이블2에 넣기
+    for k in range(0,10):
+        table2[i][k]=num_List2[0]
+        del num_List2[0]
+
+for i in range(0,10):
+    for k in range(0,10):
+        print("%4d"%table2[i][k],end=" ")
+    print("")
+
+num_List2=[]
+for i in range(0,len(table2)): ##테이블1 짝수만
+    for k in range(0,len(table2)):
+        if table2[i][k]%2==0:
+            num_List2.append(table2[i][k])
+            table2[i][k]=0
+            #print("%4d"%table1[i][k],end=" ")            
+#print(num_List1)
+            
+print("")##########3
+'''
+for i in range(0,10): ##짝수 0으로 바꿈
+    for k in range(0,10):
+        print("%4d"%table1[i][k],end="")
+        
+    print("")#############
+'''
+
+'''
+for i in range(0,len(table1)):  
+    for k in range(0,len(table1)):
+        if table1[i][k]%2!=0:
+            print("%4d"%table1[i][k],end=" ")
+print("")############
+'''
+num_List1=[]
+for i in range(0,len(table1)): ##테이블2 홀수만
+    for k in range(0,len(table1)):
+        if table1[i][k]%2!=0:
+            num_List1.append(table1[i][k])
+            table1[i][k]=0
+            #print("%4d"%table2[i][k],end=" ")
+            
+#print(num_List2)
+'''
+print(" ")
+print(" ")
+for i in range(0,10): ##홀수 0으로 바꿈
+    for k in range(0,10):
+        print("%4d"%table2[i][k],end="")
+    print("")#############
+print("")
+'''
+print("▽▽▽★홀수 넣기★▽▽▽")
+for i in range(0,10): #테이블1 홀수 놓기 
+    for k in range(0,10):
+      if table2[i][k]==0:
+        table2[i][k]=num_List1[0]
+        del num_List1[0]
+
+      print("%4d"%table2[i][k],end=" ")
+    print("")
+print("")##########3
+print("▽▽★★짝수 넣기★★▽▽")
+for i in range(0,10): #테이블2 짝수 놓기 
+    for k in range(0,10):
+      if table1[i][k]==0:
+        table1[i][k]=num_List2[0]
+        del num_List2[0]
+
+      print("%4d"%table1[i][k],end=" ")
+    print("")
+print("")
+
+########################################################
+pp=mergeSort(mergeSort1(table1)) #테이블1을 1중리스트로 만들고 정렬함  
+p=mergeSort(mergeSort1(table2)) #테이블1을 2중리스트로 만들고 정렬함 
+print("♡♡★★홀수 정렬★★♡♡")
+for i in range(0,10):
+    for k in range(0,10):
+        table1[i][k]=p[(i*10)+k] #for문 i값과 for문 k값을 같이 돌리기 위해 씀 1중을 2중으로 만들기 위함
+        
+for i in range(0,10):
+    for k in range(0,10):
+        print("%4d"%table1[i][k],end=" ")
+    print("")
+print("")
+print("♥♥☆☆짝수 정렬☆☆♥♥")
+for i in range(0,10): #
+    for k in range(0,10):
+        table2[i][k]=pp[(i*10)+k]
+        
+for i in range(0,10):
+    for k in range(0,10):
+        print("%4d"%table2[i][k],end=" ")
+    print("")
+print("")
+###########################################################
+print("♡♡◇◇빈 테이블3◇◇♡♡")
+for i in range(0,10): ####빈 테이블3
+    for k in range(0,20):
+        List.append(value)
+    table3.append(List)
+    List=[]
+for i in range(0,10):
+    for k in range(0,20):
+        print("%4d"%table3[i][k],end=" ")
+    print("")
+print("") 
+###########################################################
+tablepro1+=ins_sotr1(table1) #테이블1 빈테이블에 넣음
+tablepro1+=ins_sotr1(table2) #테이블2 빈테이블에 넣음
+print("▼▼▼▼테이블1,2 합침♣♣♣♣")
+print(tablepro1)
+print("")
+print("♥♥◆◆테이블1+2 -->테이블3◆◆♥♥")
+for i in range(0,10): #테이블1,2를 넣은 테이블프로를 테이블3에 넣음
+    for k in range(0,20):
+        table3[i][k]=tablepro1[(i*20)+k]
+
+for i in range(0,10):
+    for k in range(0,20):
+        print("%4d"%table3[i][k],end=" ")
+    print("")
+print("")
+print("◎◎◎→○테이블3-->1중 리스트로 변환○←◎◎◎")
+a=insertionSort(ins_sotr1(table3))# 테이블3 일중으로 펴고 정렬하고 a에 넣고
+print(a)
+print("")
+print("□□□정렬된 테이블3□□□")
+for i in range(0,10): ####
+    for k in range(0,20):
+        table3[i][k]=a[(i*20)+k]
+        
+for i in range(0,10):
+    for k in range(0,20):
+        print("%4d"%table3[i][k],end=" ")
+    print("")
+print("")
