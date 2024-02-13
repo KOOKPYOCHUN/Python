@@ -3,7 +3,7 @@ import random
 
 def  mergeSort(table1):
     
-    if len(table1) <=1: #테이블 길이가 1이하이면 테이블값 리턴
+    if len(table1) <=1: #테이블 길이가 1이하이면 테이블값 리턴, 리스트의 길이가 0 또는 1이면 정렬된 것으로 봄
         return table1 
 
     mid=len(table1)//2 # 테이블 길이 측정 하고 반으로 나눠서 mid에 넣음
