@@ -12,7 +12,7 @@ print(num_List)
 
 def  mergeSort(table1):
     
-    if len(table1) <=1: #테이블 길이가 1이하이면 테이블값 리턴
+    if len(table1) <=1: #테이블 길이가 1이하이면 테이블값 리턴, 테이블 길이가 1이하면 정렬되어있다고 간주
         return table1 
 
     mid=len(table1)//2 # 테이블 길이 측정 하고 반으로 나눠서 mid에 넣음, ex) table 길이 100이면 50 넣음, table 길이 6이면 3넣음
