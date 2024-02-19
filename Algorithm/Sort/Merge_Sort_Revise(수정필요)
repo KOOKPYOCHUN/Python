@@ -41,7 +41,8 @@ def merge(left, right):
 
   return merged
 
-
+sorted = merge_sort(num_List)
+print(sorted)
     
     
   
