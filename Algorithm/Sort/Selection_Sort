@@ -1,1 +1,4 @@
+def selection_sort(table):
 
+  if lan(table) < 1:
+    return table
