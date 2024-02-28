@@ -8,9 +8,3 @@ def selection_sort(table):
         min_index = j
 
     table[i], table[min_index] = table[min_index], table[i] # 최소값과 현재 인덱스 값을 교환하여 정렬
-
-
-
-
-
-    
